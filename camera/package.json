@@ -1,0 +1,12 @@
+{
+    "version": "0.3.4a",
+    "name": "com.facilityhero.plugin.camera",
+    "cordova_name": "Camera",
+    "description": "Cordova Camera Plugin",
+    "license": "Apache 2.0",
+    "keywords": [
+        "cordova",
+        "camera"
+    ],
+    "engines": []
+}

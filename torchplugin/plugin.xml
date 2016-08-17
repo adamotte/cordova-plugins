@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.facilityhero.plugin.Torch" version="0.1.1">
+        <name>Torch</name>
+        <author>Facility Hero team</author>
+        <description>Cordova Torch Plugin</description>
+        <license>Private</license>
+        <keywords>cordova,torch</keywords>
+
+
+
+        <!-- ios -->
+        <platform name="ios">
+            <js-module src="www/ios/torch.js" name="torch">
+                <clobbers target="cordova.plugins.Torch" />
+            </js-module>
+
+            <config-file target="config.xml" parent="/*">
+                <feature name="Torch">
+                    <param name="ios-package" value="TorchPlugin"/>
+                </feature>
+            </config-file>
+            <source-file src="src/ios/TorchPlugin.m" />
+            <header-file src="src/ios/TorchPlugin.h" />
+        </platform>
+
+
+        <!-- Android -->
+        <platform name="android">
+            <js-module src="www/android/torch.js" name="torch">
+                <clobbers target="cordova.plugins.Torch" />
+            </js-module>
+
+            <config-file target="res/xml/config.xml" parent="/*">
+                <feature name="Torch">
+                    <param name="android-package" value="com.plugin.torch.TorchPlugin"/>
+                </feature>
+            </config-file>
+
+            <config-file target="AndroidManifest.xml" parent="/manifest">
+                <uses-permission android:name="android.permission.CAMERA" />
+            </config-file>
+
+            <source-file src="src/android/TorchPlugin.java" target-dir="src/com/plugin/torch"/>
+
+        </platform>
+
+
+
+    </plugin>

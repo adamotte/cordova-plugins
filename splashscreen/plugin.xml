@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="com.facilityhero.plugin.splashscreen"
+      version="0.3.4a">
+    <name>Splashscreen</name>
+    <author>FacilityHero Team</author>
+    <description>Cordova Splashscreen Plugin</description>
+    <license>Private</license>
+    <keywords>cordova,splashscreen,loader,spinner</keywords>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <js-module src="www/splashscreen.js" name="SplashScreen">
+        <clobbers target="navigator.splashscreen" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SplashScreen">
+            <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/res/layout/land/splash_layout.xml" target-dir="res/layout-land/" />
+        <source-file src="src/android/res/layout/port/splash_layout.xml" target-dir="res/layout/" />
+        <source-file src="src/android/SplashScreen.java" target-dir="src/org/apache/cordova/splashscreen" />
+        <source-file src="src/android/FacilityHero.java" target-dir="src/com/logbook/facilityhero/" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+		    <feature name="SplashScreen">
+			    <param name="ios-package" value="CDVSplashScreen"/>
+			    <param name="onload" value="true"/>
+		    </feature>
+        </config-file>
+
+	    <header-file src="src/ios/CDVSplashScreen.h" />
+	    <source-file src="src/ios/CDVSplashScreen.m" />
+
+	    <framework src="CoreGraphics.framework" />
+    </platform>
+
+</plugin>

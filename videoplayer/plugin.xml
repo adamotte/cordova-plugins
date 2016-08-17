@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	id="com.facilityhero.plugin.VideoPlayer"
+	version="1.0.0">
+
+	<name>VideoPlayer</name>
+	<author>FacilityHero Team</author>
+	<description>
+		The video player allows you to display videos from your Android Cordova application.
+		This plugin fires an Intent to have your devices video player show the video.
+	</description>
+	<license>Private</license>
+	<keywords>video,player,android</keywords>
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>
+
+	<js-module src="www/videoplayer.js" name="VideoPlayer">
+		<clobbers target="cordova.plugins.videoPlayer" />
+	</js-module>
+
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="VideoPlayer">
+				<param name="android-package" value="com.plugin.videoplayer.VideoPlayer" />
+			</feature>
+		</config-file>
+		<source-file src="src/android/VideoPlayer.java" target-dir="src/com/plugin/videoplayer" />
+	</platform>
+
+</plugin>

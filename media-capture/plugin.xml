@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+xmlns:android="http://schemas.android.com/apk/res/android"
+           id="com.facilityhero.plugin.media-capture"
+      version="0.3.4a">
+    <name>Capture</name>
+
+    <description>Cordova Media Capture Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,media,capture</keywords>
+
+    <dependency id="org.apache.cordova.file" />
+
+    <js-module src="www/CaptureAudioOptions.js" name="CaptureAudioOptions">
+        <clobbers target="CaptureAudioOptions" />
+    </js-module>
+
+    <js-module src="www/CaptureImageOptions.js" name="CaptureImageOptions">
+        <clobbers target="CaptureImageOptions" />
+    </js-module>
+
+    <js-module src="www/CaptureVideoOptions.js" name="CaptureVideoOptions">
+        <clobbers target="CaptureVideoOptions" />
+    </js-module>
+
+    <js-module src="www/CaptureError.js" name="CaptureError">
+        <clobbers target="CaptureError" />
+    </js-module>
+
+    <js-module src="www/MediaFileData.js" name="MediaFileData">
+        <clobbers target="MediaFileData" />
+    </js-module>
+
+    <js-module src="www/MediaFile.js" name="MediaFile">
+        <clobbers target="MediaFile" />
+    </js-module>
+
+    <js-module src="www/capture.js" name="capture">
+        <clobbers target="navigator.device.capture" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Capture" >
+                <param name="android-package" value="com.facilityhero.plugin.mediacapture.Capture"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.RECORD_VIDEO"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+
+        <source-file src="src/android/Capture.java" target-dir="src/com/facilityhero/plugin/mediacapture" />
+        <source-file src="src/android/FileHelper.java" target-dir="src/com/facilityhero/plugin/mediacapture" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Capture">
+                <param name="ios-package" value="CDVCapture" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/CDVCapture.h" />
+        <source-file src="src/ios/CDVCapture.m" />
+        <resource-file src="src/ios/CDVCapture.bundle" />
+
+        <framework src="CoreGraphics.framework" />
+        <framework src="MobileCoreServices.framework" />
+    </platform>
+
+</plugin>
